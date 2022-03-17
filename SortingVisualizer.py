@@ -5,7 +5,7 @@ import math
 pygame.init()
 
 #TODO- Allow changing of speed
-#TODO- allow pausing
+#done- allow pausing
 #TODO- print time it took to sort
 #TODO- change colors
 #TODO- change keys to buttons instead
@@ -169,6 +169,8 @@ def main():
             elif event.key == pygame.K_SPACE and sorting == False:
                 sorting = True
                 sorting_algorithm_generator = sorting_algorithm(draw_info, ascending)
+            elif event.key == pygame.K_SPACE and sorting == True:
+                sorting = False
             elif event.key == pygame.K_a and sorting == False:
                 ascending = True
             elif event.key == pygame.K_d and sorting == False:
