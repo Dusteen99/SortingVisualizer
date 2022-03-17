@@ -4,6 +4,13 @@ import random
 import math
 pygame.init()
 
+#TODO- Allow changing of speed
+#TODO- allow pausing
+#TODO- print time it took to sort
+#TODO- change colors
+#TODO- change keys to buttons instead
+#TODO- change fonts
+#TODO- implement all sorting algorithms
 class DrawInformation:
     BLACK = 0, 0, 0
     WHITE = 255, 255, 255
