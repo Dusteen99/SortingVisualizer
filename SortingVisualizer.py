@@ -37,6 +37,7 @@ class DrawInformation:
         self.block_height = math.floor((self.height - self.TOP_PAD) / (self.max_val - self.min_val))
         self.start_x = self.SIDE_PAD // 2
 
+#Draws stuff
 def draw(draw_info):
     draw_info.window.fill(draw_info.BACKGROUND_COLOR)
     
