@@ -27,10 +27,19 @@ export class SortingVisualizer extends React.Component{
     }
 
     mergeSort(){
-        const javaScriptSortedArray = this.state.array.slice().sort((a, b) => a - b);
-        const sortedArray = sortingAlgorithms.mergeSort(this.state.array);
-
-        console.log(arraysAreEqual(javaScriptSortedArray, sortedArray));
+        const animations = sortingAlgorithms.mergeSort(this.state.array);
+        for(let i = 0; i < animations.length; i++){
+            const {comparison, swap} = animations[i];
+            setTimeout(() => {
+                const arrayBars = document.getElementsByClassName('array-bar');
+                arrayBars[comparison[1]].style.backgroundColor = 'red';
+                arrayBars[comparison[0]].style.backgroundColor = 'red';
+                setTimeout(() => {
+                    arrayBars[comparison[1]].style.backgroundColor = 'turquoise';
+                    arrayBars[comparison[0]].style.backgroundColor = 'turquoise';
+                }, (i + 1) * 10);
+            }, i * 10);
+        }
     }
 
     quickSort(){
