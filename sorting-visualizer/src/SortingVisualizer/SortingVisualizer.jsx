@@ -27,18 +27,29 @@ export class SortingVisualizer extends React.Component{
     }
 
     mergeSort(){
-        const animations = sortingAlgorithms.mergeSort(this.state.array);
+        const animations = sortingAlgorithms.getMergeSortAnimations(this.state.array);
+
         for(let i = 0; i < animations.length; i++){
-            const {comparison, swap} = animations[i];
-            setTimeout(() => {
-                const arrayBars = document.getElementsByClassName('array-bar');
-                arrayBars[comparison[1]].style.backgroundColor = 'red';
-                arrayBars[comparison[0]].style.backgroundColor = 'red';
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = i % 3 !== 2;
+            if(isColorChange){
+                const [barOneIdx, barTwoIdx] = animations[i];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = i % 3 === 0 ? 'red' : 'turquoise';
                 setTimeout(() => {
-                    arrayBars[comparison[1]].style.backgroundColor = 'turquoise';
-                    arrayBars[comparison[0]].style.backgroundColor = 'turquoise';
-                }, (i + 1) * 10);
-            }, i * 10);
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * 3);
+            }
+            else{
+                setTimeout(() => {
+                    const [barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * 3);
+            }    
         }
     }
 
@@ -64,7 +75,7 @@ export class SortingVisualizer extends React.Component{
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-            const mergeSortedArray = sortingAlgorithms.mergeSort(array.slice());
+            const mergeSortedArray = sortingAlgorithms.getMergeSortAnimations(array.slice());
             console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
         }
     }
