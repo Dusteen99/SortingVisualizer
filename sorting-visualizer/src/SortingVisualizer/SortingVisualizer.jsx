@@ -1,6 +1,6 @@
 import React from 'react';
 import './SortingVisualizer.css'
-import * as sortingAlgorithms from '../sortingAlgorithms/sortingAlgorithms.js';
+import * as mergesort from '../sortingAlgorithms/Mergesort.js';
 
 export class SortingVisualizer extends React.Component{
     constructor(props){
@@ -27,7 +27,7 @@ export class SortingVisualizer extends React.Component{
     }
 
     mergeSort(){
-        const animations = sortingAlgorithms.getMergeSortAnimations(this.state.array);
+        const animations = mergesort.getMergeSortAnimations(this.state.array);
 
         for(let i = 0; i < animations.length; i++){
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -75,7 +75,7 @@ export class SortingVisualizer extends React.Component{
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-            const mergeSortedArray = sortingAlgorithms.getMergeSortAnimations(array.slice());
+            const mergeSortedArray = mergesort.getMergeSortAnimations(array.slice());
             console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
         }
     }
