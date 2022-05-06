@@ -6,6 +6,12 @@ export function Quicksort(array){
 
     return animations;
 }
+/*Basic steps for what I need to do
+
+    -when comparing two values, push them into the animations array as a tuple
+    -push them a second time to revert the color
+*/
+
 //Below is some pseudo code for reference to implement quicksort 
 
 
